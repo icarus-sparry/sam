@@ -32,9 +32,6 @@ Community
 
 Rob posts updates about sam on Twitter at http://twitter.com/TheKingAdRob.
 
-There's a mailing list and discussion group available at https://groups.google.com/forum/#!forum/deadpixi-sam.
-The list is low-volume and used mostly for announcements and discussion about features.
-
 Installation
 ============
 
@@ -348,6 +345,13 @@ Erez Schatz
 
 ckeen
     Added Alt modifier support.
+
+David Tolpin
+    Added support for optional automatic indentation.
+
+Andrew Higham
+    Added support for focus-follows-mouse, based on a couple of patches posted
+    to the sam-fans mailing list in the ‘90s. 
 
 If I've forgotten you in this list of credits, please accept my apologies and email me (Rob King) at jking@deadpixi.com to be added.
 

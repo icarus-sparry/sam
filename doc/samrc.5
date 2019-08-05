@@ -9,7 +9,8 @@
 .Sh DESCRIPTION
 A
 .Nm
-file in the user's home directory can be used to configure the downloaded portion of the
+file in the user's home directory can be used to configure the downloaded
+portion of the
 .Xr sam 1
 editor
 .Pq "that is, samterm" "."
@@ -195,6 +196,23 @@ or
 If
 .Dq true ","
 then tabs will be automatically expanded.
+.It autoindent
+Determines whether a line following a non-empty indented line is automatically indented.
+It is of the form:
+.Bd -literal
+
+    autoindent B
+
+.Ed
+where
+.Em B
+is the string
+.Dq true
+or
+.Dq false "."
+If
+.Dq true ","
+then a new line after a non-empty indented line is automatically indented.
 .It snarfselection
 Indicates which X selection should be exchanged with
 .Nm
@@ -209,6 +227,24 @@ The forms are:
     snarfselection secondary
     snarfselection clipboard
 .Ed
+.It followfocus
+Determines window focus mode.
+It is of the form:
+.Bd -literal
+
+    followfocus B
+
+.Ed
+where
+.Em B
+is the string
+.Dq true
+or
+.Dq false "."
+If
+.Dq true ","
+then the window focus mode is set to follow the mouse pointer.
+In this mode typing is directed to the window currently underneath the mouse pointer.
 .El
 .Ss Defaults
 The default keybindings and mouse chords are those documented in
@@ -220,6 +256,7 @@ and tabstops are set at every eight characters.
 The default X selection is
 .Do primary
 .Dc "."
+The default window focus mode is "Click to focus". Typing is directed to the window which was last clicked.
 .Ss "Modifier Keys"
 The
 .Em bind
@@ -244,15 +281,6 @@ the following directive could be used:
     bind CS e command exchange
 
 .Ed
-.Pp
-Note that using the Alt key in bindings can interfere with composition sequences using the bound key
-.Po
-see
-.Dq "Composed Text Input"
-in
-.Xr sam 1
-for details
-.Pc "."
 .Ss "Command Names"
 The following names can be used for commands:
 .TS
@@ -260,31 +288,31 @@ c | c | c
 - | - | -
 l | l | r.
 Name	Meaning	Default Binding
-escape	Highlight recently typed text	Escape
-scrolldown	Scroll display down by page	Page Down, Down/Right Arrow
-scrollup	Scroll display up by page	Page Up, Up/Left Arrow
-scrolldownline	Scroll display down by line	None
-scrollupline	Scroll display up by line	None
+escape	Highlight recent text	Escape
+scrolldown	Scroll down by page	 PgDn, Down/Right
+scrollup	Scroll up by page	PgUp, Up/Left
+scrolldownline	Scroll down by line	None
+scrollupline	Scroll up by line	None
 jump	Jump to/from command window	Control-K
-charright	Move dot one character to the right	Control-D
-charleft	Move dot one character to the left	Control-S
-lineup	Move dot one line up	Control-E
-linedown	Move dot one line down	Control-X
-delbol	Delete to beginning of line	Control-U
-delword	Delete previous word	Control-W
-delbs	Delete previous character	BackSpace
-del	Delete following character	Delete
+charright	Move dot one to the right	Control-D
+charleft	Move dot one to the left	Control-S
+lineup	Move dot up	Control-E
+linedown	Move dot down	Control-X
+delbol	Delete to BOL	Control-U
+delword	Delete prev. word	Control-W
+delbs	Delete prev. character	BackSpace
+del	Delete next character	Delete
 cut	Cut selection	Control-Y
 snarf	Snarf selection	Control-C
 paste	Paste snarf buffer	Control-V
 exchange	Exchange snarf buffer	Control-Q
 eol	Move to end of line	None
 bol	Move to beginning of line	None
-tab	Insert a (possibly expanded) tab	Tab
-send	Append argument to command window	None
+tab	Insert a tab	Tab
+send	Append to command window	None
 write	Write the current file to disk	None
-look	Find the next occurance of the string in dot	None
-search	Find the next occurance of the last regex	None
+look	Find next literal string	None
+search	Find next regex	None
 .TE
 .Pp
 Additionally,
